@@ -17,8 +17,8 @@ mongoose.connect('mongodb://localhost:27017/pjpbatch6');
 mongoose.Promise = global.Promise;
 
 // Add a Middleware to serve static files
-app.use(express.static(path.join(__dirname, '../public')));
-app.set('views', path.join(__dirname, '../views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
 
 app.engine('html', engines.mustache);
 app.set('view engine', 'html');
@@ -29,6 +29,7 @@ app.listen(4000, () => {
 })
 
 app.get('/', (req, res) => res.redirect('/games'));
+app.get('/signup',(req,res) => res.render('signup.ejs'));
 app.get('/games', (req, res) => res.render('homepage.html'));
 app.get('/games/guess-the-color', (req, res) => res.render('colorGame.html'));
 app.get('/games/tetris', (req, res) => res.render('tetris.html'));
